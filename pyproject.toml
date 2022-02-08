@@ -10,8 +10,12 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.6"
 
+
 [tool.poetry.dev-dependencies]
-flake8 = "^3.8.3"
+pytest-cov = "^3.0.0"
+pytest = "^7.0.0"
+flake8 = "^4.0.1"
+PyYAML = "^6.0"
 
 [tool.poetry.scripts]
 gendiff = "gen_diff.scripts.gendiff:main"
