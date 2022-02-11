@@ -1,5 +1,8 @@
 import json
+import yaml
 import os
+
+from gen_diff.read_file import get_read_file
 
 
 def lower(item):
@@ -9,10 +12,8 @@ def lower(item):
 
 
 def generate_diff(path1, path2):
-    file1_path = os.path.abspath(path1)
-    file2_path = os.path.abspath(path2)
-    file1 = json.load(open(file1_path))
-    file2 = json.load(open(file2_path))
+    file1 = get_read_file(path1)
+    file2 = get_read_file(path2)
     keys = [key for key in file1.keys()]
     result = '{\n'
     for key in file2.keys():
@@ -31,3 +32,10 @@ def generate_diff(path1, path2):
             result += '  + {}: {}\n'.format(item, lower(file2[item]))
     result += '}'
     return result
+
+
+# print(get_read_file('/home/ilnar/python-project-lvl2/tests/fixtures/file1.json'))
+# print(get_read_file('/home/ilnar/python-project-lvl2/tests/fixtures/file1.yaml'))
+# print(get_read_file('/home/ilnar/python-project-lvl2/tests/fixtures/file2.json'))
+# print(get_read_file('/home/ilnar/python-project-lvl2/tests/fixtures/file2.yaml'))
+# print(generate_diff('/home/ilnar/python-project-lvl2/tests/fixtures/file1.json', '/home/ilnar/python-project-lvl2/tests/fixtures/file2.yaml'))
