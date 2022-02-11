@@ -1,6 +1,4 @@
 import json
-import yaml
-import os
 
 from gen_diff.read_file import get_read_file
 
@@ -32,10 +30,3 @@ def generate_diff(path1, path2):
             result += '  + {}: {}\n'.format(item, lower(file2[item]))
     result += '}'
     return result
-
-
-# print(get_read_file('/home/ilnar/python-project-lvl2/tests/fixtures/file1.json'))
-# print(get_read_file('/home/ilnar/python-project-lvl2/tests/fixtures/file1.yaml'))
-# print(get_read_file('/home/ilnar/python-project-lvl2/tests/fixtures/file2.json'))
-# print(get_read_file('/home/ilnar/python-project-lvl2/tests/fixtures/file2.yaml'))
-# print(generate_diff('/home/ilnar/python-project-lvl2/tests/fixtures/file1.json', '/home/ilnar/python-project-lvl2/tests/fixtures/file2.yaml'))
