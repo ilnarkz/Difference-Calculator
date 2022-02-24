@@ -1,32 +1,41 @@
-import json
-
-from gen_diff.read_file import get_read_file
-
-
-def lower(item):
-    if isinstance(item, str):
-        return item
-    return json.dumps(item)
-
-
-def generate_diff(path1, path2):
-    file1 = get_read_file(path1)
-    file2 = get_read_file(path2)
+def get_external_view(file1, file2):
     keys = [key for key in file1.keys()]
-    result = '{\n'
     for key in file2.keys():
         if key not in keys:
             keys.append(key)
+    result = {}
     for item in sorted(keys):
-        if item in file1 and item in file2:
-            if file1[item] == file2[item]:
-                result += '    {}: {}\n'.format(item, lower(file1[item]))
-            else:
-                result += '  - {}: {}\n'.format(item, lower(file1[item]))
-                result += '  + {}: {}\n'.format(item, lower(file2[item]))
-        elif item in file1 and item not in file2:
-            result += '  - {}: {}\n'.format(item, lower(file1[item]))
+        if item in file1 and item not in file2:
+            result[item] = {
+                'type': 'removed',
+                'value': file1[item],
+                'children': None
+            }
+        elif item not in file1 and item in file2:
+            result[item] = {
+                'type': 'added',
+                'value': file2[item],
+                'children': None
+            }
+        elif file1[item] == file2[item]:
+            result[item] = {
+                'type': 'unchanged',
+                'value': file1[item],
+                'children': None
+            }
+        elif isinstance(file1[item], dict) and isinstance(file2[item], dict):
+            result[item] = {
+                'type': 'nested',
+                'value': None,
+                'children': get_external_view(file1[item], file2[item])
+            }
         else:
-            result += '  + {}: {}\n'.format(item, lower(file2[item]))
-    result += '}'
+            result[item] = {
+                'type': 'changed',
+                'value': {
+                    'old_value': file1[item],
+                    'new_value': file2[item]
+                },
+                'children': None
+            }
     return result
