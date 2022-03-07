@@ -1,5 +1,5 @@
 import pytest
-from gendiff.generatediff import generate_diff
+from gendiff.generate_diff import generatediff
 
 
 FILE1_JSON = 'tests/fixtures/file1.json'
@@ -35,4 +35,4 @@ def read_files(expected_result):
 													(FILE1_NESTED_YAML, FILE2_NESTED_YAML, PLAIN, EXPECTED_PLAIN),
 													(FILE1_NESTED_YAML, FILE2_NESTED_YAML, JSON, EXPECTED_JSON)])
 def test_json(file1, file2, format_name, expected):
-	assert generate_diff(file1, file2, format_name) == read_files(expected)
+	assert generatediff(file1, file2, format_name) == read_files(expected)
