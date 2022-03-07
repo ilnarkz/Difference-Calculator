@@ -6,6 +6,7 @@
 [![hexlet-check](https://github.com/ilnarkz/python-project-lvl2/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/ilnarkz/python-project-lvl2/actions/workflows/hexlet-check.yml)
 
 <a href="https://codeclimate.com/github/ilnarkz/python-project-lvl2/test_coverage"><img src="https://api.codeclimate.com/v1/badges/5f67c29840ad19e57a09/test_coverage" /></a>
+<<<<<<< HEAD
 
 Пакет "Вычислитель различий" позволяет вычислять разницу между двумя файлами. 
 Вычислитель различий может принимать файлы в форматах: '.json', '.yml' и '.yaml'. 
@@ -38,3 +39,5 @@ pip ^21.3 Для установки пакета используйте кома
 Пример работы вычислителя различий для вложенных JSON-файлов и YAML-файлов(форматтер json):
 
 [![asciicast](https://asciinema.org/a/V4AsE8WmwNsnhFlgcyyw8xlF9.svg)](https://asciinema.org/a/V4AsE8WmwNsnhFlgcyyw8xlF9)
+=======
+>>>>>>> parent of f91ad63 (add description and add asciinemas)
