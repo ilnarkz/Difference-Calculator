@@ -17,7 +17,7 @@
 Для использования пакета необходима версия:
 
 python ^3.8
-pip ^21.3 Для установки пакета используйте команду: python3 -m pip install git+https://github.com/ilnarkz/python-project-lvl2.git Для запуска игры используйте команду: poetry run brain-even
+pip ^21.3 Для установки пакета используйте команду: python3 -m pip install git+https://github.com/ilnarkz/python-project-lvl2.git
 
 Пример работы вычислителя различий для простых JSON-файлов:
 
