@@ -13,8 +13,11 @@ FILE2_NESTED_YAML = 'tests/fixtures/file2_nested.yaml'
 EXPECTED_LEVEL = 'tests/fixtures/result_json_level.txt'
 EXPECTED_NESTED = 'tests/fixtures/result_nested.txt'
 EXPECTED_PLAIN = 'tests/fixtures/result_plain.txt'
+EXPECTED_LEVEL_JSON = 'tests/fixtures/result_json.txt'
+EXPECTED_JSON = 'tests/fixtures/result_nested_json.txt'
 STYLISH = 'stylish'
 PLAIN = "plain"
+JSON = 'json'
 
 
 def read_files(expected_result):
@@ -24,9 +27,12 @@ def read_files(expected_result):
 
 @pytest.mark.parametrize('file1, file2, format_name, expected', [(FILE1_JSON, FILE2_JSON, STYLISH, EXPECTED_LEVEL),
 													(FILE1_JSON, FILE2_YAML, STYLISH, EXPECTED_LEVEL),
+													(FILE1_JSON, FILE2_YAML, JSON, EXPECTED_LEVEL_JSON),
 													(FILE1_NESTED_JSON, FILE2_NESTED_JSON, STYLISH, EXPECTED_NESTED),
 													(FILE1_NESTED_JSON, FILE2_NESTED_JSON, PLAIN, EXPECTED_PLAIN),
+													(FILE1_NESTED_JSON, FILE2_NESTED_JSON, JSON, EXPECTED_JSON),
 													(FILE1_NESTED_YAML, FILE2_NESTED_YAML, STYLISH, EXPECTED_NESTED),
-													(FILE1_NESTED_YAML, FILE2_NESTED_YAML, PLAIN, EXPECTED_PLAIN)])
+													(FILE1_NESTED_YAML, FILE2_NESTED_YAML, PLAIN, EXPECTED_PLAIN),
+													(FILE1_NESTED_YAML, FILE2_NESTED_YAML, JSON, EXPECTED_JSON)])
 def test_json(file1, file2, format_name, expected):
 	assert generate_diff(file1, file2, format_name) == read_files(expected)
