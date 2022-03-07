@@ -38,7 +38,8 @@ def convert_stylish(dictionary, depth=0):
             )
         else:
             result.append('{}{}{}: {}'.format(
-                indent, UNCHANGED, key, convert_stylish(children_, depth)).rstrip()
+                indent, UNCHANGED, key,
+                convert_stylish(children_, depth)).rstrip()
             )
     output = itertools.chain('{', result, [indent + '}'])
     return '\n'.join(output)
