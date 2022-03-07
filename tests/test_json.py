@@ -20,11 +20,6 @@ PLAIN = "plain"
 JSON = 'json'
 
 
-def read_files(expected_result):
-	file1 = open(expected_result).read()
-	return file1
-
-
 @pytest.mark.parametrize('file1, file2, format_name, expected', [(FILE1_JSON, FILE2_JSON, STYLISH, EXPECTED_LEVEL),
 													(FILE1_JSON, FILE2_YAML, STYLISH, EXPECTED_LEVEL),
 													(FILE1_JSON, FILE2_YAML, JSON, EXPECTED_LEVEL_JSON),
@@ -35,4 +30,4 @@ def read_files(expected_result):
 													(FILE1_NESTED_YAML, FILE2_NESTED_YAML, PLAIN, EXPECTED_PLAIN),
 													(FILE1_NESTED_YAML, FILE2_NESTED_YAML, JSON, EXPECTED_JSON)])
 def test_json(file1, file2, format_name, expected):
-	assert generate_diff(file1, file2, format_name) == read_files(expected)
+	assert generate_diff(file1, file2, format_name) == open(expected).read()
