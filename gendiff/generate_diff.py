@@ -1,8 +1,8 @@
-from gen_diff.engine import get_external_view
-from gen_diff.formatters.json import convert_json
-from gen_diff.formatters.plain import convert_plain
-from gen_diff.read_file import get_read_file
-from gen_diff.formatters.stylish import convert_stylish
+from gendiff.engine import get_external_view
+from gendiff.formatters.json import convert_json
+from gendiff.formatters.plain import convert_plain
+from gendiff.read_file import get_read_file
+from gendiff.formatters.stylish import convert_stylish
 
 
 def generate_diff(file_path1, file_path2, format_name='stylish'):
