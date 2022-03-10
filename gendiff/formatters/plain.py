@@ -1,30 +1,31 @@
 import json
+from gendiff.engine import REMOVED, ADDED, CHANGED, NESTED
 
 
-def convert_plain(dictionary, parent=''):
+def format_to_plain(dictionary, parent=''):
     result = []
     for key, value_condition in dictionary.items():
         type_ = value_condition.get('type')
         value_ = value_condition.get('value')
         children_ = value_condition.get('children')
         path = parent + '.' + key
-        if type_ == 'removed':
+        if type_ == REMOVED:
             result.append(f"Property '{path.strip('.')}' was removed")
-        elif type_ == 'added':
+        elif type_ == ADDED:
             if isinstance(value_, dict):
                 result.append(f"Property '{path.strip('.')}' was added with value: [complex value]")
             else:
                 result.append(f"Property '{path.strip('.')}' was added with value: {lower(value_)}")
-        elif type_ == 'changed':
+        elif type_ == CHANGED:
             if isinstance(value_.get("old_value"), dict):
                 result.append(f"Property '{path.strip('.')}' was updated. From [complex value] to {lower(value_.get('new_value'))}")
             elif isinstance(value_.get("new_value"), dict):
                 result.append(f"Property '{path.strip('.')}' was updated. From {lower(value_.get('old_value'))} to [complex value]")
             else:
                 result.append(f"Property '{path.strip('.')}' was updated. From {lower(value_.get('old_value'))} to {lower(value_.get('new_value'))}")
-        elif type_ == 'nested':
+        elif type_ == NESTED:
             if isinstance(children_, dict):
-                result.append(convert_plain(children_, path))
+                result.append(format_to_plain(children_, path))
     return '\n'.join(result)
 
 
