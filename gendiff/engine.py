@@ -5,7 +5,7 @@ CHANGED = 'changed'
 NESTED = 'nested'
 
 
-def get_external_view(file1, file2):
+def render_of_diff(file1, file2):
     keys = [key for key in file1.keys()]
     for key in file2.keys():
         if key not in keys:
@@ -34,7 +34,7 @@ def get_external_view(file1, file2):
             result[item] = {
                 'type': NESTED,
                 'value': None,
-                'children': get_external_view(file1[item], file2[item])
+                'children': render_of_diff(file1[item], file2[item])
             }
         else:
             result[item] = {

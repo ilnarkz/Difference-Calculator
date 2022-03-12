@@ -1,6 +1,8 @@
 import os
 
 
-def get_full_path(path):
+def get_read_file(path):
     file_path = os.path.abspath(path)
-    return file_path
+    filename, file_extension = os.path.splitext(file_path)
+    content = open(file_path)
+    return content, file_extension

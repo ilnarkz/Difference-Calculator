@@ -15,21 +15,21 @@ def format_to_plain(dictionary, parent=''):
             if isinstance(value_, dict):
                 result.append(f"Property '{path.strip('.')}' was added with value: [complex value]")
             else:
-                result.append(f"Property '{path.strip('.')}' was added with value: {lower(value_)}")
+                result.append(f"Property '{path.strip('.')}' was added with value: {convert_to_string(value_)}")
         elif type_ == CHANGED:
             if isinstance(value_.get("old_value"), dict):
-                result.append(f"Property '{path.strip('.')}' was updated. From [complex value] to {lower(value_.get('new_value'))}")
+                result.append(f"Property '{path.strip('.')}' was updated. From [complex value] to {convert_to_string(value_.get('new_value'))}")
             elif isinstance(value_.get("new_value"), dict):
-                result.append(f"Property '{path.strip('.')}' was updated. From {lower(value_.get('old_value'))} to [complex value]")
+                result.append(f"Property '{path.strip('.')}' was updated. From {convert_to_string(value_.get('old_value'))} to [complex value]")
             else:
-                result.append(f"Property '{path.strip('.')}' was updated. From {lower(value_.get('old_value'))} to {lower(value_.get('new_value'))}")
+                result.append(f"Property '{path.strip('.')}' was updated. From {convert_to_string(value_.get('old_value'))} to {convert_to_string(value_.get('new_value'))}")
         elif type_ == NESTED:
             if isinstance(children_, dict):
                 result.append(format_to_plain(children_, path))
     return '\n'.join(result)
 
 
-def lower(item):
+def convert_to_string(item):
     if isinstance(item, str):
         return f"'{item}'"
     return json.dumps(item)

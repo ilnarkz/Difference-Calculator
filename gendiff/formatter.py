@@ -3,11 +3,16 @@ from gendiff.formatters.plain import format_to_plain
 from gendiff.formatters.stylish import format_to_stylish
 
 
-def change_format(common_dict, format_name):
-    if format_name == 'plain':
+STYLISH = 'stylish'
+PLAIN = "plain"
+JSON = 'json'
+
+
+def get_format(common_dict, format_name):
+    if format_name == PLAIN:
         return format_to_plain(common_dict)
-    if format_name == 'json':
+    if format_name == JSON:
         return format_to_json(common_dict)
-    if not format_name or format_name == 'stylish':
+    if not format_name or format_name == STYLISH:
         return format_to_stylish(common_dict)
-    return 'Incorrect format'
+    return 'error'

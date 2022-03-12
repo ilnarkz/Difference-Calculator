@@ -1,4 +1,5 @@
 import pytest
+from gendiff.formatter import STYLISH, JSON, PLAIN
 from gendiff.generate_diff import generate_diff
 
 
@@ -15,9 +16,6 @@ EXPECTED_NESTED = 'tests/fixtures/result_nested.txt'
 EXPECTED_PLAIN = 'tests/fixtures/result_plain.txt'
 EXPECTED_LEVEL_JSON = 'tests/fixtures/result_json.txt'
 EXPECTED_JSON = 'tests/fixtures/result_nested_json.txt'
-STYLISH = 'stylish'
-PLAIN = "plain"
-JSON = 'json'
 
 
 def read_files(expected_result):
