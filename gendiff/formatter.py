@@ -8,11 +8,11 @@ PLAIN = "plain"
 JSON = 'json'
 
 
-def get_format(common_dict, format_name):
+def render(common_dict, format_name):
     if format_name == PLAIN:
         return format_to_plain(common_dict)
     if format_name == JSON:
         return format_to_json(common_dict)
     if not format_name or format_name == STYLISH:
         return format_to_stylish(common_dict)
-    return 'error'
+    raise Exception('Incorrect format')
