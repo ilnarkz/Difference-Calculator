@@ -2,10 +2,10 @@ import json
 import yaml
 
 
-def parse(contents_data):
-    if contents_data[1] == '.json':
-        return json.loads(contents_data[0])
-    elif contents_data[1] in ['.yaml', '.yml']:
-        return yaml.load(contents_data[0], Loader=yaml.SafeLoader)
+def parse(data_file, file_extension):
+    if file_extension == '.json':
+        return json.loads(data_file)
+    elif file_extension in ['.yaml', '.yml']:
+        return yaml.load(data_file, Loader=yaml.SafeLoader)
     else:
         raise Exception('Incorrect file extension')
