@@ -8,34 +8,37 @@
 <a href="https://codeclimate.com/github/ilnarkz/python-project-lvl2/test_coverage"><img src="https://api.codeclimate.com/v1/badges/5f67c29840ad19e57a09/test_coverage" /></a>
 
 
-Пакет "Вычислитель различий" позволяет вычислять разницу между двумя файлами. 
-Вычислитель различий может принимать файлы в форматах: '.json', '.yml' и '.yaml'. 
-Вывод производится в форматтерах:
-1. stylish (словарь)
-2. plain (текстовый формат)
-3. json (.json файл)
+The "Difference Calculator" package allows you to calculate the difference between two files.
+The difference calculator can accept files in '.json', '.yml' and '.yaml' formats. 
+The output is done in formatters:
+1. stylish (dictionary)
+2. plain (text format)
+3. json (.json file)
 
-Для использования пакета необходима версия:
+To use the package you need version:
 
 python ^3.8
-pip ^21.3 Для установки пакета используйте команду: python3 -m pip install git+https://github.com/ilnarkz/python-project-lvl2.git
+pip ^21.3
 
-Пример работы вычислителя различий для простых JSON-файлов:
+
+To install the package use the command: python3 -m pip install git+https://github.com/ilnarkz/python-project-lvl2.git
+
+An example of how the difference calculator works for simple JSON files:
 
 [![asciicast](https://asciinema.org/a/x9vC9yWSOPMNaQgBmi1eCLspq.svg)](https://asciinema.org/a/x9vC9yWSOPMNaQgBmi1eCLspq)
 
-Пример работы вычислителя различий для простых YAML-файлов:
+An example of how the difference calculator works for simple YAML files:
 
 [![asciicast](https://asciinema.org/a/JvwHMPbaOg0oqAg83rENcYia7.svg)](https://asciinema.org/a/JvwHMPbaOg0oqAg83rENcYia7)
 
-Пример работы вычислителя различий для вложенных JSON-файлов и YAML-файлов(форматтер stylish):
+An example of how the difference calculator works for nested JSON and YAML files(formatter stylish):
 
 [![asciicast](https://asciinema.org/a/jbTbcS3y1Wo7mVpWkAtchIxDd.svg)](https://asciinema.org/a/jbTbcS3y1Wo7mVpWkAtchIxDd)
 
-Пример работы вычислителя различий для вложенных JSON-файлов и YAML-файлов(форматтер plain):
+An example of how the difference calculator works for nested JSON and YAML files(formatter plain):
 
 [![asciicast](https://asciinema.org/a/TPGg4D898Q4S4HafkTl8g4rIJ.svg)](https://asciinema.org/a/TPGg4D898Q4S4HafkTl8g4rIJ)
 
-Пример работы вычислителя различий для вложенных JSON-файлов и YAML-файлов(форматтер json):
+An example of how the difference calculator works for nested JSON and YAML files(formatter json):
 
 [![asciicast](https://asciinema.org/a/V4AsE8WmwNsnhFlgcyyw8xlF9.svg)](https://asciinema.org/a/V4AsE8WmwNsnhFlgcyyw8xlF9)
